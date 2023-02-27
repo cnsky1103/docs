@@ -1,8 +1,8 @@
-title: Just the Docs Template
-description: A starter template for a Jeykll site using the Just the Docs theme!
+title: cnsky1103 docs
+description: 随便写写
 theme: just-the-docs
 
-url: https://just-the-docs.github.io
+url: https://cnsky1103.github.io/docs
 
 aux_links:
-  Template Repository: https://github.com/just-the-docs/just-the-docs-template
+  Template Repository: https://github.com/cnsky1103/docs
