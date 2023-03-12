@@ -1,0 +1,52 @@
+/*
+ * @lc app=leetcode id=1020 lang=golang
+ *
+ * [1020] Number of Enclaves
+ */
+package code
+
+// @lc code=start
+func numEnclaves(grid [][]int) int {
+	if len(grid) == 0 {
+		return 0
+	}
+
+	m, n := len(grid), len(grid[0])
+	count := 0
+
+	for i := 0; i < m; i++ {
+		dfs(grid, i, 0, m, n)
+		dfs(grid, i, n-1, m, n)
+	}
+
+	for j := 0; j < n; j++ {
+		dfs(grid, 0, j, m, n)
+		dfs(grid, m-1, j, m, n)
+	}
+
+	for i := 1; i < m-1; i++ {
+		for j := 1; j < n-1; j++ {
+			if grid[i][j] == 1 {
+				count += dfs(grid, i, j, m, n)
+			}
+		}
+	}
+	return count
+}
+
+func dfs(grid [][]int, i, j, m, n int) int {
+	if i < 0 || i >= m || j < 0 || j >= n || grid[i][j] == 0 {
+		return 0
+	}
+
+	grid[i][j] = 0
+
+	num := 1
+	num += dfs(grid, i-1, j, m, n)
+	num += dfs(grid, i+1, j, m, n)
+	num += dfs(grid, i, j-1, m, n)
+	num += dfs(grid, i, j+1, m, n)
+	return num
+}
+
+// @lc code=end
