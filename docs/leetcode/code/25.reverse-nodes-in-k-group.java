@@ -1,0 +1,64 @@
+/*
+ * @lc app=leetcode id=25 lang=java
+ *
+ * [25] Reverse Nodes in k-Group
+ */
+
+/**
+ * Definition for singly-linked list.
+ */
+class ListNode {
+    int val;
+    ListNode next;
+
+    ListNode() {
+    }
+
+    ListNode(int val) {
+        this.val = val;
+    }
+
+    ListNode(int val, ListNode next) {
+        this.val = val;
+        this.next = next;
+    }
+}
+
+// @lc code=start
+class Solution {
+    public ListNode reverseKGroup(ListNode head, int k) {
+        if (head == null) {
+            return head;
+        }
+
+        ListNode p = head;
+        for (int i = 0; i < k; i++) {
+            if (p == null) {
+                return head;
+            }
+            p = p.next;
+        }
+
+        ListNode p1 = head, p2 = p;
+        ListNode newHead = reverseBetween(p1, p2);
+        p1.next = reverseKGroup(p2, k);
+        return newHead;
+    }
+
+    ListNode reverseBetween(ListNode a, ListNode b) {
+        // reverse between [a,b)
+        // reverse the entire list <=> reverseBetween(head, null)
+        ListNode pre, cur, nxt;
+        pre = null;
+        cur = a;
+        while (cur != b) {
+            nxt = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = nxt;
+        }
+
+        return pre;
+    }
+}
+// @lc code=end
