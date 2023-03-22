@@ -1,0 +1,42 @@
+/*
+ * @lc app=leetcode id=931 lang=golang
+ *
+ * [931] Minimum Falling Path Sum
+ */
+package code
+
+// @lc code=start
+func minFallingPathSum(matrix [][]int) int {
+	n := len(matrix)
+	dp := make([][]int, n)
+	for i := 0; i < n; i++ {
+		dp[i] = make([]int, n)
+		dp[0][i] = matrix[0][i]
+	}
+
+	for r := 1; r < n; r++ {
+		for j := 0; j < n; j++ {
+			min := dp[r-1][j]
+			if j > 0 && dp[r-1][j-1] < min {
+				min = dp[r-1][j-1]
+			}
+
+			if j < n-1 && dp[r-1][j+1] < min {
+				min = dp[r-1][j+1]
+			}
+
+			dp[r][j] = min + matrix[r][j]
+		}
+	}
+
+	min := dp[n-1][0]
+	for i := 1; i < n; i++ {
+		if dp[n-1][i] < min {
+			min = dp[n-1][i]
+		}
+	}
+
+	return min
+}
+
+// @lc code=end

@@ -1,0 +1,36 @@
+import java.util.Arrays;
+
+/*
+ * @lc app=leetcode id=435 lang=java
+ *
+ * [435] Non-overlapping Intervals
+ */
+
+// @lc code=start
+class Solution {
+    public int eraseOverlapIntervals(int[][] intervals) {
+        int n = intervals.length;
+        Arrays.sort(intervals, (int[] a, int[] b) -> {
+            return a[1] - b[1];
+        });
+
+        int cur = 0;
+        int overlapping = 1;
+        int next = cur + 1;
+        while (next < n) {
+            while (next < n && intervals[next][0] < intervals[cur][1]) {
+                next++;
+            }
+
+            if (next < n) {
+                overlapping++;
+                cur = next;
+            } else {
+                break;
+            }
+        }
+
+        return n - overlapping;
+    }
+}
+// @lc code=end

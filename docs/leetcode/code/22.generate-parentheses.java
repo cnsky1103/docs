@@ -1,0 +1,37 @@
+import java.util.LinkedList;
+import java.util.List;
+
+/*
+ * @lc app=leetcode id=22 lang=java
+ *
+ * [22] Generate Parentheses
+ */
+
+// @lc code=start
+class Solution {
+    List<String> ans;
+
+    public List<String> generateParenthesis(int n) {
+        ans = new LinkedList<>();
+        backtrack(n, "", 0, 0, n);
+        return ans;
+    }
+
+    void backtrack(int n, String s, int l, int r, int remaining) {
+        if (remaining == 0) {
+            ans.add(new String(s));
+            return;
+        }
+
+        if (l < n) {
+            backtrack(n, s + "(", l + 1, r, remaining);
+        }
+
+        if (r < n) {
+            if (l > r) {
+                backtrack(n, s + ")", l, r + 1, remaining - 1);
+            }
+        }
+    }
+}
+// @lc code=end

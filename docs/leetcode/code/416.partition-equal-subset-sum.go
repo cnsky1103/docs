@@ -1,0 +1,48 @@
+/*
+ * @lc app=leetcode id=416 lang=golang
+ *
+ * [416] Partition Equal Subset Sum
+ */
+package code
+
+// @lc code=start
+func canPartition(nums []int) bool {
+	sum := 0
+	for _, num := range nums {
+		sum += num
+	}
+
+	if sum%2 != 0 {
+		return false
+	}
+
+	sum /= 2
+	n := len(nums)
+	dp := make([][]bool, n+1)
+	for i := 0; i <= n; i++ {
+		dp[i] = make([]bool, sum+1)
+	}
+
+	for i := 1; i <= n; i++ {
+		if nums[i-1] <= sum {
+			dp[i][nums[i-1]] = true
+		}
+		dp[i][0] = true
+	}
+
+	dp[0][0] = true
+
+	for i := 1; i <= n; i++ {
+		for j := 0; j <= sum; j++ {
+			if j >= nums[i-1] {
+				dp[i][j] = dp[i-1][j-nums[i-1]] || dp[i-1][j]
+			} else {
+				dp[i][j] = dp[i-1][j]
+			}
+		}
+	}
+
+	return dp[n][sum]
+}
+
+// @lc code=end
