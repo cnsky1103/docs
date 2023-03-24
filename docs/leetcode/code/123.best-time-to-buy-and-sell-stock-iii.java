@@ -1,0 +1,25 @@
+/*
+ * @lc app=leetcode id=123 lang=java
+ *
+ * [123] Best Time to Buy and Sell Stock III
+ */
+
+// @lc code=start
+class Solution {
+    public int maxProfit(int[] prices) {
+        int n = prices.length;
+        int[][][] dp = new int[n + 1][3][2];
+        dp[1][0][1] = -Integer.MIN_VALUE;
+        dp[1][1][1] = -prices[0];
+        dp[1][2][1] = -prices[0];
+        for (int i = 2; i <= n; i++) {
+            for (int k = 1; k <= 2; k++) {
+                dp[i][k][0] = Math.max(dp[i - 1][k][0], dp[i - 1][k][1] + prices[i - 1]);
+                dp[i][k][1] = Math.max(dp[i - 1][k][1], dp[i - 1][k - 1][0] - prices[i - 1]);
+            }
+        }
+
+        return dp[n][2][0];
+    }
+}
+// @lc code=end
