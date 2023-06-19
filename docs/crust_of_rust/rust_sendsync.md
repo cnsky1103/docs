@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Send and Sync
-parent: crust_of_rust
+parent: Crust of Rust
 nav_order: 5
 ---
 

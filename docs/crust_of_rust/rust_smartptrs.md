@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Smart Pointers
-parent: crust_of_rust
+parent: Crust of Rust
 nav_order: 6
 ---
 

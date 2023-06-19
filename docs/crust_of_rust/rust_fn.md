@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Fn
-parent: crust_of_rust
+parent: Crust of Rust
 nav_order: 2
 ---
 
