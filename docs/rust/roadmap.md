@@ -15,3 +15,5 @@ permalink: /docs/rust
 - [Linux exe](https://fasterthanli.me/series/making-our-own-executable-packer)
 - [树莓派](https://github.com/rust-embedded/rust-raspberrypi-OS-tutorials)
 - [Spacedrive](https://github.com/spacedriveapp/spacedrive)
+- [Rust数据库](https://github.com/erikgrinaker/toydb)
+- [awesome-rust](https://github.com/rust-unofficial/awesome-rust)
