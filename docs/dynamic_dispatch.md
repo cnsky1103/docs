@@ -6,7 +6,7 @@ nav_order: 5
 
 # Rust：Trait Object、dyn与胖指针
 
-准备Rust面试的时候发现能找到的为数不多的面经都问到了trait object，动态绑定，vtable之类的东西，因此决定系统的学一下。本文是[Jon的视频](https://www.youtube.com/watch?v=8O0Nt9qY_vo&ab_channel=JonGjengset)的学习笔记。
+准备Rust面试的时候发现能找到的为数不多的面经都问到了trait object，动态绑定，vtable之类的东西，因此决定系统的学一下。本文是[Jon的视频](https://www.youtube.com/watch?v=xcygqF5LVmM&ab_channel=JonGjengset)的学习笔记。
 
 ## 从Monomorphization开始
 
