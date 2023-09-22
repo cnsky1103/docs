@@ -1,7 +1,7 @@
 ---
 layout: default
-title: 用Rust写Java的ConcurrentHashMap
-nav_order: 5
+title: 用Rust写Java的ConcurrentHashMap（未完成）
+nav_order: 999
 has_children: true
 permalink: /docs/rust_concurrenthashmap
 ---
